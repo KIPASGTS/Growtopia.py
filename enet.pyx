@@ -359,6 +359,7 @@ cdef class Packet:
         if self.is_valid() and not self.sent:
             enet_packet_destroy(self._enet_packet)
 
+
     def is_valid(self):
         if self._enet_packet:
             return True
