@@ -96,13 +96,6 @@ def OnPlayerMoving(peer, tank_packet: TankPacket):
 
     if GetPlayer(peer).UpdateClothes == False:
         OnSetClothing(peer, GetPlayer(peer).NetID, GetPlayer(peer).Clothes.Hair, GetPlayer(peer).Clothes.Shirt, GetPlayer(peer).Clothes.Pants, GetPlayer(peer).Clothes.Feet, GetPlayer(peer).Clothes.Face, GetPlayer(peer).Clothes.Hand, GetPlayer(peer).Clothes.Back, GetPlayer(peer).Clothes.Mask, GetPlayer(peer).Clothes.Necklace, GetPlayer(peer).Clothes.Ances, GetPlayer(peer).Clothes.SkinColor)
-        #Custom Pet
-        GetPlayer(peer).PetCustom.petName = "Blue Gem Lock"
-        GetPlayer(peer).PetCustom.set_pos_x_y(GetPlayer(peer).PosX + random.randint(0,32), GetPlayer(peer).PosY + random.randint(0,32))
-        OnSpawn(peer, -2, -2, GetPlayer(peer).PetCustom.posX, GetPlayer(peer).PetCustom.posY, GetPlayer(peer).PetCustom.petName, "ttBadge", False, True, True, False)
-
-        #Custom Pet
-        
         GetPlayer(peer).UpdateClothes = True
 
     for currentPeer in Peers:
@@ -110,10 +103,6 @@ def OnPlayerMoving(peer, tank_packet: TankPacket):
             tank_packet.NetID = GetPlayer(peer).NetID
             SendTankPacket(currentPeer, tank_packet)
             OnSetClothing(peer, -2, 0, 0, 0, 0, 0, 0, 7188, 0, 0, 0, 10)
-            #Pet Lerp State
-            pet_lerp = tank_packet
-            tank_packet.NetID = -2 #Pet Netid
-            SendTankPacket(currentPeer, tank_packet)
 
 
 def OnClientExitWorld(peer):
