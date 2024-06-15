@@ -88,12 +88,6 @@ def OnReceived(peer, address, host, packet):
                         OnDialogRequest(peer, "add_label_with_icon|big|`wFind item``|left|6016|\nadd_textbox|Enter a word below to find the item|\nadd_text_input|nusaverse_find_item_name|Item Name|"+findStr+"|30|\nend_dialog|nusaverse_dev_find|Cancel|Find the item!|\nadd_quick_exit|\n")
                     except Exception as e:
                         OnConsoleMessage(peer, f"Error: {e}")
-                elif text.startswith('/pcolor'):
-                    args = text.split(' ')
-                    if len(args) == 2:
-                        color_number = int(args[1])
-                        OnSetClothing(peer, -2, 0, 0, 0, 0, 0, 0, 7188, 0, 0, 0, color_number)
-                        OnConsoleMessage(peer, f"Pet Color: {color_number}")
 
                 elif text.startswith('/help'):
                     Packet.SendPacket(peer, 3, "action|log\nmsg|Help Command: /find <`$item_name`o> /info /give <`$item_id`o> <`$amount`o>")
