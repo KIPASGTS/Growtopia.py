@@ -52,13 +52,18 @@ class Item:
 
 
 class ItemCallback:
-    Items = {}
-    ItemCount = 0
-    ItemVersion = 0
-    ProtonKey = "PBG892FXX982ABC*"
-    FileHash = 0
 
-    BufferForUpdatingItems = None
+    def __init__(self) -> None:
+        self.Items = {}
+        self.ItemCount = 0
+        self.ItemVersion = 0
+        self.ProtonKey = "PBG892FXX982ABC*"
+        self.FileHash = 0
+        self.BufferForUpdatingItems = None
+    
+    def GetItems(self, itemid) -> Item:
+        if itemid < 0 or itemid > len(self.Items): return self.Items[0] #return Blank
+        return self.Items[itemid]
 
 def get_hash(data, length):
     acc = 0x55555555 & 0xFFFFFFFF

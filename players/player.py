@@ -11,7 +11,7 @@ class PlayerClothes:
     Mask     = 0
     Necklace = 0
     Ances    = 0
-    SkinColor = 0
+    SkinColor = 2022356223
 
 class PlayerRole:
     PLAYER = 0
@@ -20,6 +20,19 @@ class PlayerRole:
     MODS = 3
     DEVS = 4
     FOUNDER = 5
+
+class PlayerPet:
+    def __init__(self, pet_name = 'root', pet_pos_x = 0, pet_pos_y = 0) -> None:
+        self.petName = pet_name
+        self.posX = pet_pos_x
+        self.posY = pet_pos_y
+
+    def get_position(self):
+        return [self.posX, self.posY]
+    
+    def set_pos_x_y(self, posX, posY):
+        self.posX = posX
+        self.posY = posY
 
 
 class PlayerInventory:
@@ -36,14 +49,19 @@ class Player:
         self.UserID = -1
         self.NetID = 0
         self.Nicked = ''
+        self.Country = ''
         self.Inventory = [PlayerInventory(itemid=18, amount=1), PlayerInventory(itemid=32, amount=1)]
         self.Clothes = PlayerClothes()
+        self.PetCustom = PlayerPet("kipas")
         self.Suspended = False
         self.InventoryAmount = 16
         self.CurrentWorld = ''
         self.PosX = 0
         self.PosY = 0
         self.Role = 0
+        self.UpdateClothes = False
+        self.DebugMode = False
+
 
     def GetDisplayName(self) -> str:
         if self.Nicked != '': return self.Nicked

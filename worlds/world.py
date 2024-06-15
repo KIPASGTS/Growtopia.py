@@ -10,6 +10,9 @@ class Tile:
     Flags = 0
     Label = ""
 
+    HitTotal = 0
+    HitTime = 0
+
 class World:
     def __init__(self) -> None:
         self.WorldName = ""
